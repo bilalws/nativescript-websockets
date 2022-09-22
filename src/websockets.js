@@ -95,7 +95,7 @@ class BrowserWebSocketsEvent {
  */
 class BrowserWebSockets extends NativeWebSockets {
     constructor(url, protocols) {
-        const options = {browser: true}
+        const options = { browser: true }
         if (protocols != null) {
             if (!Array.isArray(protocols)) {
                 options.protocols = [protocols];
@@ -112,7 +112,7 @@ class BrowserWebSockets extends NativeWebSockets {
         this.onopen = null;
 
         // We have to open this WS automatically, BUT we want this to fire after the rest of the users code does so that the user can attach his events
-        setTimeout( () => {
+        setTimeout(() => {
             this.open();
         }, 250);
     }
@@ -195,7 +195,7 @@ class BrowserWebSockets extends NativeWebSockets {
     }
 }
 
-module.exports = NativeWebSockets;
+module.exports = BrowserWebSockets;
 
 // We attach to the GLOBAL object, so this is now available everywhere.
 global.WebSocket = BrowserWebSockets;
